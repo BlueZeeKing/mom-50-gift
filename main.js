@@ -26,25 +26,23 @@ let layout = d3Cloud()
   .on("end", draw);
 layout.start();
 
-svg.call(d3Zoom.zoom()
+let zoom = d3Zoom.zoom()
   .extent([[0, 0], [width, height]])
-  .scaleExtent([1, 8])
-  .on("zoom", zoomed));
+  .scaleExtent([0.5, 8])
+  .on("zoom", zoomed)
+
+svg.call(zoom)
 
 function zoomed({transform}) {
   svg.select('g').attr(
         "transform",
-        `translate(${transform.x + layout.size()[0] / 2}, ${transform.y + layout.size()[1] / 2}) scale(${transform.k})`
+        `translate(${transform.x}, ${transform.y}) scale(${transform.k})`
       )
 }
 
 function draw(words) {
   svg
     .append("g")
-    .attr(
-      "transform",
-      "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")"
-    )
     .selectAll("text")
     .data(words)
     .join("text")
@@ -55,7 +53,7 @@ function draw(words) {
     .attr("fill", (d) => (d.color))
     .attr("font-family", "Impact")
     .attr("transform", function (d) {
-      return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+      return "translate(" + [d.x + layout.size()[0] / 2, d.y + layout.size()[1] / 2] + ")rotate(" + d.rotate + ")";
     })
     .text(function (d) {
       return d.text;
