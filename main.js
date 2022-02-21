@@ -52,7 +52,7 @@ function draw(words) {
       return d.size + "px";
     })
     .attr("text-anchor", "middle")
-    .attr("fill", (d) => (d.size == 50 ? "rgb(0,0,0)" : "#"+Math.floor(Math.random()*16777215).toString(16)))
+    .attr("fill", (d) => (d.color))
     .attr("font-family", "Impact")
     .attr("transform", function (d) {
       return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
