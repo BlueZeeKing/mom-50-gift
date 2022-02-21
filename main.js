@@ -51,7 +51,7 @@ function draw(words) {
     })
     .attr("text-anchor", "middle")
     .attr("fill", (d) => (d.color))
-    .attr("font-family", "Impact")
+    .attr("font-family", "Impact, Arial, sans-serif")
     .attr("transform", function (d) {
       return "translate(" + [d.x + layout.size()[0] / 2, d.y + layout.size()[1] / 2] + ")rotate(" + d.rotate + ")";
     })
