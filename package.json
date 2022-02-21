@@ -9,5 +9,9 @@
   },
   "devDependencies": {
     "vite": "^2.8.0"
+  },
+  "dependencies": {
+    "d3": "^7.3.0",
+    "topojson-client": "^3.1.0"
   }
 }
