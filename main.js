@@ -59,5 +59,7 @@ function draw(words) {
     })
     .text(function (d) {
       return d.text;
-    });
+    })
+    .append("title")
+    .text((d) => d.person)
 }
